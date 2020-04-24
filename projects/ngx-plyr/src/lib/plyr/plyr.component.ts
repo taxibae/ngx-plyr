@@ -182,7 +182,8 @@ export class PlyrComponent implements AfterViewInit, OnChanges, OnDestroy {
     if (videoElement) {
       this.videoElement = videoElement;
     } else {
-      this.videoElement = this.renderer.createElement('video');
+      if (this.plyrType === 'audio') this.videoElement = this.renderer.createElement('audio');
+      else this.videoElement = this.renderer.createElement('video');
       this.videoElement.controls = true;
 
       if (this.plyrCrossOrigin) {
